@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://shubham20205157:shubham20205157@devconnector.i5nba9d.mongodb.net/?retryWrites=true&w=majority",
+    "jsontoken": "mySceretsToken",
+    "githubClientId": "191820d566729a1adf89",
+    "githubSceretId" : "2a164edf0f00bfafabe1c9eb7f7408ab9a8e3bf6"
+}
