@@ -1,5 +1,5 @@
 {
-  "name": "musixon",
+  "name": "devsharks",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Satyam107git/MusixOn.git"
+    "url": "git+https://github.com/Shubham-20205157/Dev-Sharks.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Satyam107git/MusixOn/issues"
+    "url": "https://github.com/Shubham-20205157/Dev-Sharks/issues"
   },
-  "homepage": "https://github.com/Satyam107git/MusixOn#readme",
+  "homepage": "https://github.com/Shubham-20205157/Dev-Sharks#readme",
   "dependencies": {
     "@coreui/react": "^4.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
