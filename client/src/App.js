@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './utils/PrivateRoute';
+import CreateGroup from './components/features/CreateGroup';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -42,6 +43,7 @@ const App = () => {
               <Route exact path='/login' element={<Login />} />
               <Route element={<PrivateRoute />}>
                 <Route exact path='/dashboard' element={<Dashboard />} />
+                <Route exact path='/group' element = {<CreateGroup />} />
               </Route>
             </Routes>
           </section>
