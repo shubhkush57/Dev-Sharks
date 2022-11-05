@@ -48,7 +48,7 @@ Team Name: Dev Sharks
 
 ## Tech Stack
 
-**Client:** React.js, Redux, Bootstarp, Chart.js, Material-UI,React Bootstrap
+**Client:** React.js, Redux, Bootstarp, Chart.js, Material-UI, React-Bootstrap
 
 **Server:** Node.js, Express.js
 

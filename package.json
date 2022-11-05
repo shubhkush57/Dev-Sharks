@@ -1,7 +1,7 @@
 {
   "name": "devsharks",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dora's Study Group",
   "main": "server.js",
   "scripts": {
     "start": "node server",
