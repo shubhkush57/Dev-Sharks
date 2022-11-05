@@ -5,7 +5,8 @@ import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { setAlert } from '../../actions/alert';
 import {setGroups,setLoading} from '../../actions/group';
-
+import "./style.css"
+import { Link } from 'react-router-dom';
 const Groups = ({
     groups,
     loading,
@@ -16,6 +17,9 @@ const Groups = ({
         <div>
             <Row>
         {groups.map((group) => (
+          <Link to={`/dashboard/${group.title}`}>
+       <button className="btn" > 
+       
           <Col key={group.id} sm={12} md={6} lg={4} xl={3}>
             <Card
               className='my-3 p-3 rounded'
@@ -30,6 +34,8 @@ const Groups = ({
               </Card.Body>
             </Card>
           </Col>
+          </button>  
+          </Link>
         ))}
       </Row>
         </div>

@@ -2,8 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 
-
-
+  
+ 
+  
+  
+  
+  .btn:hover {
+    color:#000;
+    font-size:12px;
+    letter-spacing:1px;
+    font-weight:bold;
+  }
+  
+ 
 .icons {
     margin-top: 14px;
 }
