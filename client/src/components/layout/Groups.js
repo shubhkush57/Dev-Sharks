@@ -11,13 +11,13 @@ const Groups = ({
     groups,
     loading,
     setGroups,
-    setLoading
+    setLoading,
 }) =>{
     return (
         <div>
             <Row>
         {groups.map((group) => (
-          <Link to={`/dashboard/${group.title}`}>
+          <Link to={`/dashboard/${group._id}`}>
        <button className="btn" > 
        
           <Col key={group.id} sm={12} md={6} lg={4} xl={3}>

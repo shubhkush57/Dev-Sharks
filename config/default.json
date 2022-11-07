@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://sudh12345:sudh12345@cluster0.byft1uk.mongodb.net/?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://shubham20205157:shubham20205157@cluster0.llfskqc.mongodb.net/?retryWrites=true&w=majority",
     "jwtsecret": "Trinity"
 }
