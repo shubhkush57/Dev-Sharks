@@ -6,21 +6,17 @@ const initialState = {
 export default function(state = initialState,action){
     const {type,payload} = action;
     switch(type){
-        case GROUP_CREATE_FAIL:
+        case GET_ALL_GROUP_FAIL:
             return{
                 ...state,
                 error: payload,
                 loading: false,
             }
-        case GROUP_CREATE_SUCCESS:
-            return{
-                ...state,
-            }
-        case GET_USER_CREATED_GROUPS:
+        case GET_ALL_GROUPS_SUCCESS:
             return{
                 ...state,
                 group: payload,
-            };
+            }
         default:
             return state;
     }

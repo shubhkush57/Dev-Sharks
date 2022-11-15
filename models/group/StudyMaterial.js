@@ -10,4 +10,5 @@ const StudyMaterialSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     }
-})
+});
+module.exports = StudyMaterial = mongoose.model('StudyMaterial',StudyMaterialSchema);

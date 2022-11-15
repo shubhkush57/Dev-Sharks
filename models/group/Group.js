@@ -21,6 +21,13 @@ const GroupSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    joinedStudents:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user',
+        }
+    ]
+    
     
 });
 

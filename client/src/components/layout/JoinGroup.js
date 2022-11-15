@@ -5,31 +5,33 @@ import { Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { setAlert } from '../../actions/alert';
 import {setGroups,setLoading} from '../../actions/group';
-import "./style.css"
-import { Link ,useNavigate} from 'react-router-dom';
-const Groups = ({
+import { joinGroup } from '../../actions/joingroups';
+import "./style.css";
+import { Link } from 'react-router-dom';
+const JoinedGroups =({
     groups,
     loading,
     setGroups,
+    joinGroup,
     setLoading,
-
 }) =>{
-    const navigate = useNavigate();
+    const handleAddToJoinTeams = (group) =>{
+       console.log('Join Team Button Clicked...');
+       console.log(group);
+        joinGroup(group);
+        setAlert('Group Joined');
+    }
     return (
-      <div>
-      <Row>
-      {groups.map((group) => (
-       
-          <Col key={group.id} sm={12} md={6} lg={4} xl={3}>
+        <div>
+        <Row>
+          
+        {groups.map((group) => (
+        
+        <Col key={group.id} sm={12} md={6} lg={4} xl={3}>
             <Card
               className='my-3 p-3 rounded'
               style={{ cursor: 'pointer' }}
               key={group.key}
-              onClick = {
-                ()=>{
-                  navigate(`/dashboard/groups/:${group._id}`)
-                }
-              }
             >
               <Card.Body>
                 <Card.Title>
@@ -38,23 +40,28 @@ const Groups = ({
                 <div>Descp: {group.descp}</div>
               </Card.Body>
             </Card>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button" onClick={()=>handleAddToJoinTeams(group._id)}>Join Team</button>
+            </div>
           </Col>
         ))}
       </Row>
-      </div>
-    );
-}
+        </div>
+    )
+};
 const mapStateToProps = (state) =>({
     groups: state.groups.groups,
-    loading: state.groups.loading,
-});
-Groups.propTypes = {
+    loding: state.groups.loading,
+})
+JoinedGroups.propTypes = {
     groups: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     setLoading: PropTypes.func.isRequired,
-    setGroups: PropTypes.func.isRequired
+    setGroups: PropTypes.func.isRequired,
+    joinGroup: PropTypes.func.isRequired,
 }
 export default connect(mapStateToProps,{
     setLoading,
     setGroups,
-})(Groups);
+    joinGroup,
+})(JoinedGroups);

@@ -4,6 +4,7 @@ const {body, validationResult} = require('express-validator');
 const Group = require('../../models/group/Group');
 const config = require('config');
 const auth = require('../../middleware/auth');
+const JoinedGroups  = require('../../models/user/JoinedGroup');
 //@route /api/group/create
 //@desc create a group
 //private after created public
@@ -61,5 +62,71 @@ router.get('/',auth,async (req,res)=>{
         res.status(500).send('Server Error');
     }
 });
+
+
+//@route /api/dashboard
+//desc getting all the group
+router.get('/all/',auth,async (req,res)=>{
+    try{
+
+        const group = await Group.find();
+        console.log(group);
+        // const group = await Group.find();
+        console.log(group.length);
+        if(!group){
+            res.json({msg: 'You have not created any group'});
+        }
+        res.json(group);
+    }catch(error){
+        console.log('Did not get any group');
+        res.status(500).send('Server Error');
+    }
+});
+
+//---------------------------------------------------------------------------
+//@route /api/group/join
+router.post('/join/',[auth],async (req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors: errors.array()});
+    }
+    
+    try{
+        let joinedgroup = await JoinedGroups.findOne({user: req.body.user});
+        if(joinedgroup){
+            return res.status(400).json({errors:[{msg: 'Already joined the group'}]});
+        }
+        const joinGroup = new JoinedGroups({
+            user: req.user.id,
+            group:req.body.group._id
+        });
+        await joinGroup.save();
+        console.log('Group Joined by you successsfully');
+        res.json(joinGroup);
+    }
+    catch(error){
+        console.log(errors.message);
+        res.status(500).send('server error');
+    }
+});
+
+//@route /api/group/join
+//@desc getting the all the joined group data
+router.get('/join',auth,async(req,res) =>{
+    try{
+        console.log('In router we r getting the data of joined grups');
+        const joingroups = await Group.find({user: req.user.id});
+        console.log(joingroups);
+        if(!joingroups){
+            return res.json({msg: 'You have not joined any group'});
+        }
+        console.log('Groups get by you successfullly');
+        res.json(joingroups);
+    }
+    catch(error){
+        return res.status(400).json({msg: 'Server Error'});
+    }
+});
+//----------------------------------------------------------------------------------------
 
 module.exports = router;
