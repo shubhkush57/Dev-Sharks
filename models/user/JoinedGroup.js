@@ -5,7 +5,7 @@ const JoinedGroupsSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    group:{
+    id:{
         type:mongoose.Schema.Types.ObjectId,
         ref: 'group'
     },

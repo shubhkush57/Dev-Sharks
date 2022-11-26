@@ -16,9 +16,10 @@ const JoinedGroups =({
     setLoading,
 }) =>{
     const handleAddToJoinTeams = (group) =>{
+       const { _id } = group;
        console.log('Join Team Button Clicked...');
-       console.log(group);
-        joinGroup(group);
+       console.log({ _id });
+        joinGroup({ _id });
         setAlert('Group Joined');
     }
     return (
@@ -41,7 +42,7 @@ const JoinedGroups =({
               </Card.Body>
             </Card>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button" onClick={()=>handleAddToJoinTeams(group._id)}>Join Team</button>
+                <button class="btn btn-primary" type="button" onClick={()=>handleAddToJoinTeams(group)}>Join Team</button>
             </div>
           </Col>
         ))}

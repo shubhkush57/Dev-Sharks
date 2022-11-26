@@ -5,7 +5,6 @@ import {setAlert} from './alert';
 export const getAllGroups = () => async dispatch =>{
     try{
         console.log('getting data of all groups .....');
-        
         const res = await axios.get('/api/group/all');
         console.log(res.data);
         dispatch({

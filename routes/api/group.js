@@ -82,29 +82,44 @@ router.get('/all/',auth,async (req,res)=>{
         res.status(500).send('Server Error');
     }
 });
-
 //---------------------------------------------------------------------------
 //@route /api/group/join
-router.post('/join/',[auth],async (req,res)=>{
+//@desc to join the group
+router.post('/join',[auth,
+    [   
+        body('id', 'id is required').not().isEmpty(),
+    ]
+    ],async (req,res)=>{
+    console.log("In the router join group....");
     const errors = validationResult(req);
     if(!errors.isEmpty()){
+        console.log('Error in the router join')
+        console.log(errors);
         return res.status(400).json({errors: errors.array()});
     }
     
     try{
-        let joinedgroup = await JoinedGroups.findOne({user: req.body.user});
+        console.log('in the try block')
+        console.log(req.user)
+        let joinedgroup = await JoinedGroups.findOne({user: req.user.id, id: req.body.id });
+        console.log(1);
         if(joinedgroup){
+            console.log(4);
             return res.status(400).json({errors:[{msg: 'Already joined the group'}]});
         }
+        console.log(2);
+        console.log(req.body.group);
         const joinGroup = new JoinedGroups({
             user: req.user.id,
-            group:req.body.group._id
+            id:req.body.id
         });
+        console.log(3);
         await joinGroup.save();
         console.log('Group Joined by you successsfully');
         res.json(joinGroup);
     }
     catch(error){
+        console.log('Error in the backend post join metods')
         console.log(errors.message);
         res.status(500).send('server error');
     }

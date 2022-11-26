@@ -6,12 +6,7 @@ const initialState = {
 export default function(state = initialState,action){
     const {type,payload} = action;
     switch(type){
-        case GET_JOIN_GROUP_SUCCESS:
-            return {
-                ...state,
-                group: payload,
-            }
-        case GROUP_CREATE_SUCCESS:
+        case GROUP_JOIN_SUCCESS:
             return {
                 ...state,
             }
